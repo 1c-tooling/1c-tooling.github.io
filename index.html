@@ -3,14 +3,165 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>1c-tooling</title>
+    <meta name="description" content="1c-tooling — открытые инструменты для разработки на платформе 1С.">
+    <meta name="theme-color" content="#f2c94c">
+    <title>1c-tooling — инструменты для разработки на 1С</title>
+    <script>
+      /** Applies the saved theme before rendering. */
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme || systemTheme;
+      })();
+    </script>
+    <link rel="icon" href="./assets/1c-tooling-logo.png" type="image/png">
+    <link rel="stylesheet" href="./assets/site.css">
   </head>
   <body>
-    <main>
-      <h1>1c-tooling</h1>
-      <ul>
-        <li><a href="./eska/">eska</a></li>
-      </ul>
+    <a class="skip-link" href="#content">К содержанию</a>
+
+    <header class="site-header shell">
+      <a class="brand" href="./" aria-label="1c-tooling — главная">
+        <img src="./assets/1c-tooling-logo.png" alt="" width="40" height="40">
+        <span>1c-tooling</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="#eska">eska</a>
+        <a href="#install">Установка</a>
+        <a href="https://github.com/1c-tooling" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить тёмную тему">
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.25 15.35A8.5 8.5 0 0 1 8.65 3.75a8.5 8.5 0 1 0 11.6 11.6Z"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Open source · инструменты для 1С</p>
+          <h1>Проекты 1С.<br><em>Из терминала — в поставку.</em></h1>
+          <p class="hero-lead">
+            1c-tooling создаёт открытые инструменты для понятной и воспроизводимой
+            работы с проектами 1С.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#install">Установить eska</a>
+            <a class="button button-quiet" href="https://github.com/1c-tooling/eska" target="_blank" rel="noreferrer">
+              Репозиторий <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="hero-flow" aria-label="Рабочий процесс: XML, Git, файл поставки">
+            <span>XML</span><i aria-hidden="true"></i><span>Git</span><i aria-hidden="true"></i><span>.cf · .cfe · .epf · .erf</span>
+          </p>
+        </div>
+
+        <div class="logo-stage" aria-label="Логотип 1c-tooling">
+          <div class="logo-orbit" aria-hidden="true"></div>
+          <img src="./assets/1c-tooling-logo.png" alt="Логотип 1c-tooling: две шестерни с буквами 1C" width="611" height="611">
+          <span class="logo-caption">tools for 1C developers</span>
+        </div>
+      </section>
+
+      <section class="product-section shell" id="eska">
+        <div class="section-intro">
+          <p class="section-index">01 / eska</p>
+          <h2>Рабочий цикл проекта<br>в одной утилите</h2>
+        </div>
+
+        <article class="product-card">
+          <div class="product-name">
+            <div>
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>CLI · Rust</span>
+            </div>
+            <strong>eska</strong>
+            <a href="https://github.com/1c-tooling/eska" target="_blank" rel="noreferrer">github.com/1c-tooling/eska <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="feature-list">
+            <div class="feature-row">
+              <span>01</span>
+              <p>Подключает XML-выгрузку Конфигуратора к проекту.</p>
+            </div>
+            <div class="feature-row">
+              <span>02</span>
+              <p>Показывает Git-изменения на уровне объектов и модулей 1С.</p>
+            </div>
+            <div class="feature-row">
+              <span>03</span>
+              <p>Собирает <code>.cf</code>, <code>.cfe</code>, <code>.epf</code> и <code>.erf</code>.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="install-section shell" id="install">
+        <div class="section-intro install-intro">
+          <p class="section-index">02 / установка</p>
+          <h2>Начать с одной<br>команды</h2>
+          <p>Короткие адреса всегда ведут на установщик последней опубликованной версии.</p>
+        </div>
+
+        <div class="install-grid">
+          <article class="command-card">
+            <div class="command-heading">
+              <div>
+                <span class="platform-icon" aria-hidden="true">$</span>
+                <div>
+                  <h3>Linux и macOS</h3>
+                  <p>Shell</p>
+                </div>
+              </div>
+              <button class="copy-button" type="button" data-copy="curl --proto '=https' --tlsv1.2 -LsSf https://1c-tooling.github.io/eska/install | sh">
+                <span>Копировать</span>
+              </button>
+            </div>
+            <pre><code><span class="prompt">$</span> curl --proto '=https' --tlsv1.2 -LsSf \
+  https://1c-tooling.github.io/eska/install | sh</code></pre>
+          </article>
+
+          <article class="command-card">
+            <div class="command-heading">
+              <div>
+                <span class="platform-icon" aria-hidden="true">›_</span>
+                <div>
+                  <h3>Windows</h3>
+                  <p>PowerShell</p>
+                </div>
+              </div>
+              <button class="copy-button" type="button" data-copy="powershell -ExecutionPolicy Bypass -c &quot;irm https://1c-tooling.github.io/eska/install.ps1 | iex&quot;">
+                <span>Копировать</span>
+              </button>
+            </div>
+            <pre><code><span class="prompt">PS&gt;</span> powershell -ExecutionPolicy Bypass -c \
+  "irm https://1c-tooling.github.io/eska/install.ps1 | iex"</code></pre>
+          </article>
+
+          <div class="install-footer">
+            <p>Проверка после установки: <code>eska --version</code></p>
+            <a href="./eska/">Отдельная страница установки <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer shell">
+      <a class="brand footer-brand" href="./" aria-label="1c-tooling — главная">
+        <img src="./assets/1c-tooling-logo.png" alt="" width="32" height="32">
+        <span>1c-tooling</span>
+      </a>
+      <p>Открытые инструменты для экосистемы 1С.</p>
+      <a href="https://github.com/1c-tooling" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </footer>
+
+    <div class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script src="./assets/site.js"></script>
   </body>
 </html>

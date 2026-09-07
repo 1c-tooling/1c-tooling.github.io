@@ -3,15 +3,103 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Установка eska</title>
+    <meta name="description" content="Установка eska для Linux, macOS и Windows.">
+    <meta name="theme-color" content="#f2c94c">
+    <title>Установка eska · 1c-tooling</title>
+    <script>
+      /** Applies the saved theme before rendering. */
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = savedTheme || systemTheme;
+      })();
+    </script>
+    <link rel="icon" href="../assets/1c-tooling-logo.png" type="image/png">
+    <link rel="stylesheet" href="../assets/site.css">
   </head>
-  <body>
-    <main>
-      <h1>Установка eska</h1>
-      <h2>Linux и macOS</h2>
-      <pre><code>curl --proto '=https' --tlsv1.2 -LsSf https://1c-tooling.github.io/eska/install | sh</code></pre>
-      <h2>Windows PowerShell</h2>
-      <pre><code>powershell -ExecutionPolicy Bypass -c "irm https://1c-tooling.github.io/eska/install.ps1 | iex"</code></pre>
+  <body class="install-page">
+    <a class="skip-link" href="#content">К содержанию</a>
+
+    <header class="site-header shell">
+      <a class="brand" href="../" aria-label="1c-tooling — главная">
+        <img src="../assets/1c-tooling-logo.png" alt="" width="40" height="40">
+        <span>1c-tooling</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="../">Главная</a>
+        <a href="https://github.com/1c-tooling/eska" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить тёмную тему">
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.25 15.35A8.5 8.5 0 0 1 8.65 3.75a8.5 8.5 0 1 0 11.6 11.6Z"></path>
+          </svg>
+        </button>
+      </nav>
+    </header>
+
+    <main class="install-main shell" id="content">
+      <div class="install-hero">
+        <a class="back-link" href="../"><span aria-hidden="true">←</span> 1c-tooling</a>
+        <p class="eyebrow"><span></span> eska · установка</p>
+        <h1>Установить eska</h1>
+        <p>Выберите свою систему и выполните команду в терминале.</p>
+      </div>
+
+      <div class="install-grid standalone-install">
+        <article class="command-card">
+          <div class="command-heading">
+            <div>
+              <span class="platform-icon" aria-hidden="true">$</span>
+              <div>
+                <h2>Linux и macOS</h2>
+                <p>Shell</p>
+              </div>
+            </div>
+            <button class="copy-button" type="button" data-copy="curl --proto '=https' --tlsv1.2 -LsSf https://1c-tooling.github.io/eska/install | sh">
+              <span>Копировать</span>
+            </button>
+          </div>
+          <pre><code><span class="prompt">$</span> curl --proto '=https' --tlsv1.2 -LsSf \
+  https://1c-tooling.github.io/eska/install | sh</code></pre>
+        </article>
+
+        <article class="command-card">
+          <div class="command-heading">
+            <div>
+              <span class="platform-icon" aria-hidden="true">›_</span>
+              <div>
+                <h2>Windows</h2>
+                <p>PowerShell</p>
+              </div>
+            </div>
+            <button class="copy-button" type="button" data-copy="powershell -ExecutionPolicy Bypass -c &quot;irm https://1c-tooling.github.io/eska/install.ps1 | iex&quot;">
+              <span>Копировать</span>
+            </button>
+          </div>
+          <pre><code><span class="prompt">PS&gt;</span> powershell -ExecutionPolicy Bypass -c \
+  "irm https://1c-tooling.github.io/eska/install.ps1 | iex"</code></pre>
+        </article>
+
+        <div class="install-note">
+          <div>
+            <span>После установки</span>
+            <code>eska --version</code>
+          </div>
+          <p>Скрипты загружают последнюю опубликованную сборку из GitHub Releases.</p>
+        </div>
+      </div>
     </main>
+
+    <footer class="site-footer shell compact-footer">
+      <p>eska · Apache-2.0</p>
+      <a href="https://github.com/1c-tooling/eska#readme" target="_blank" rel="noreferrer">Документация <span aria-hidden="true">↗</span></a>
+    </footer>
+
+    <div class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script src="../assets/site.js"></script>
   </body>
 </html>

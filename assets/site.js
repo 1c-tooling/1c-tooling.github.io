@@ -1,0 +1,88 @@
+/** Initializes color theme and command-copy interactions. */
+(() => {
+  const root = document.documentElement;
+  const themeButton = document.querySelector("[data-theme-toggle]");
+  const toast = document.querySelector(".copy-toast");
+  let toastTimer;
+
+  /** Updates the theme control for the active color scheme. */
+  const syncThemeButton = () => {
+    if (!themeButton) return;
+
+    const isDark = root.dataset.theme === "dark";
+    themeButton.setAttribute("aria-label", isDark ? "Включить светлую тему" : "Включить тёмную тему");
+    themeButton.setAttribute("aria-pressed", String(isDark));
+  };
+
+  /** Shows a short non-blocking status message. */
+  const showToast = (message) => {
+    if (!toast) return;
+
+    window.clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    toastTimer = window.setTimeout(hideToast, 1800);
+  };
+
+  /** Hides the current status message. */
+  function hideToast() {
+    toast?.classList.remove("is-visible");
+  }
+
+  /** Copies text with a fallback for older browsers. */
+  const copyText = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const field = document.createElement("textarea");
+    field.value = text;
+    field.setAttribute("readonly", "");
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.append(field);
+    field.select();
+    document.execCommand("copy");
+    field.remove();
+  };
+
+  /** Toggles and persists the selected color theme. */
+  const toggleTheme = () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = nextTheme;
+    localStorage.setItem("theme", nextTheme);
+    syncThemeButton();
+  };
+
+  /** Connects copy feedback to one command button. */
+  const bindCopyButton = (button) => {
+    /** Copies this button's command and updates its state. */
+    const handleCopy = async () => {
+      try {
+        await copyText(button.dataset.copy);
+        button.dataset.state = "copied";
+        const label = button.querySelector("span");
+        if (label) label.textContent = "Скопировано";
+        showToast("Команда скопирована");
+
+        /** Restores the button's default label. */
+        const resetButton = () => {
+          delete button.dataset.state;
+          if (label) label.textContent = "Копировать";
+        };
+
+        window.setTimeout(resetButton, 1800);
+      } catch {
+        showToast("Не удалось скопировать");
+      }
+    };
+
+    button.addEventListener("click", handleCopy);
+  };
+
+  themeButton?.addEventListener("click", toggleTheme);
+  document.querySelectorAll("[data-copy]").forEach(bindCopyButton);
+
+  syncThemeButton();
+})();
