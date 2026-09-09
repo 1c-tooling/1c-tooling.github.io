@@ -84,6 +84,7 @@ button {
 
 img {
   display: block;
+  height: auto;
   max-width: 100%;
 }
 
@@ -311,6 +312,7 @@ pre {
   position: relative;
   isolation: isolate;
   width: min(100%, 480px);
+  aspect-ratio: 1 / 1;
   margin-inline: auto;
 }
 
@@ -336,7 +338,8 @@ pre {
 
 .logo-stage img {
   width: 100%;
-  aspect-ratio: 1;
+  height: 100%;
+  object-fit: contain;
   border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--line));
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
