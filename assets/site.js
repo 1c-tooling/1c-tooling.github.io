@@ -62,14 +62,13 @@
       try {
         await copyText(button.dataset.copy);
         button.dataset.state = "copied";
-        const label = button.querySelector("span");
-        if (label) label.textContent = "Скопировано";
+        button.setAttribute("aria-label", "Команда скопирована");
         showToast("Команда скопирована");
 
         /** Restores the button's default label. */
         const resetButton = () => {
           delete button.dataset.state;
-          if (label) label.textContent = "Копировать";
+          button.setAttribute("aria-label", "Копировать команду");
         };
 
         window.setTimeout(resetButton, 1800);

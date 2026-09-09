@@ -27,8 +27,8 @@
       </a>
 
       <nav class="site-nav" aria-label="Основная навигация">
-        <a href="../">Главная</a>
-        <a href="https://github.com/1c-tooling/eska" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="../"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#home"></use></svg>Главная</a>
+        <a href="https://github.com/1c-tooling/eska" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#github"></use></svg>GitHub</a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить тёмную тему">
           <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="3.5"></circle>
@@ -43,7 +43,7 @@
 
     <main class="install-main shell" id="content">
       <div class="install-hero">
-        <a class="back-link" href="../"><span aria-hidden="true">←</span> 1c-tooling</a>
+        <a class="back-link" href="../"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"></use></svg>1c-tooling</a>
         <p class="eyebrow"><span></span> eska · установка</p>
         <h1>Установить eska</h1>
         <p>Выберите свою систему и выполните команду в терминале.</p>
@@ -59,8 +59,9 @@
                 <p>Shell</p>
               </div>
             </div>
-            <button class="copy-button" type="button" data-copy="curl --proto '=https' --tlsv1.2 -LsSf https://1c-tooling.github.io/eska/install | sh">
-              <span>Копировать</span>
+            <button class="copy-button" type="button" data-copy="curl --proto '=https' --tlsv1.2 -LsSf https://1c-tooling.github.io/eska/install | sh" aria-label="Копировать команду">
+              <svg class="icon icon-copy" aria-hidden="true"><use href="../assets/icons.svg#copy"></use></svg>
+              <svg class="icon icon-check" aria-hidden="true"><use href="../assets/icons.svg#check"></use></svg>
             </button>
           </div>
           <pre><code><span class="prompt">$</span> curl --proto '=https' --tlsv1.2 -LsSf \
@@ -76,8 +77,9 @@
                 <p>PowerShell</p>
               </div>
             </div>
-            <button class="copy-button" type="button" data-copy="powershell -ExecutionPolicy Bypass -c &quot;irm https://1c-tooling.github.io/eska/install.ps1 | iex&quot;">
-              <span>Копировать</span>
+            <button class="copy-button" type="button" data-copy="powershell -ExecutionPolicy Bypass -c &quot;irm https://1c-tooling.github.io/eska/install.ps1 | iex&quot;" aria-label="Копировать команду">
+              <svg class="icon icon-copy" aria-hidden="true"><use href="../assets/icons.svg#copy"></use></svg>
+              <svg class="icon icon-check" aria-hidden="true"><use href="../assets/icons.svg#check"></use></svg>
             </button>
           </div>
           <pre><code><span class="prompt">PS&gt;</span> powershell -ExecutionPolicy Bypass -c \
@@ -96,7 +98,7 @@
 
     <footer class="site-footer shell compact-footer">
       <p>eska · Apache-2.0</p>
-      <a href="https://github.com/1c-tooling/eska#readme" target="_blank" rel="noreferrer">Документация <span aria-hidden="true">↗</span></a>
+      <a class="link-with-icon" href="https://github.com/1c-tooling/eska#readme" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#book-open"></use></svg>Документация</a>
     </footer>
 
     <div class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>

@@ -27,9 +27,9 @@
       </a>
 
       <nav class="site-nav" aria-label="Основная навигация">
-        <a href="#eska">eska</a>
-        <a href="#install">Установка</a>
-        <a href="https://github.com/1c-tooling" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="#eska"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#terminal"></use></svg>eska</a>
+        <a href="#install"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#download"></use></svg>Установка</a>
+        <a href="https://github.com/1c-tooling" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#github"></use></svg>GitHub</a>
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить тёмную тему">
           <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="3.5"></circle>
@@ -46,15 +46,22 @@
       <section class="hero shell">
         <div class="hero-copy">
           <p class="eyebrow"><span></span> Open source · инструменты для 1С</p>
-          <h1>Проекты 1С.<br><em>Из терминала — в поставку.</em></h1>
+          <h1>
+            <span>Проекты 1С.</span>
+            <em><span>Из терминала —</span><span>в поставку.</span></em>
+          </h1>
           <p class="hero-lead">
             1c-tooling создаёт открытые инструменты для понятной и воспроизводимой
             работы с проектами 1С.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#install">Установить eska</a>
+            <a class="button button-primary" href="#install">
+              <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#download"></use></svg>
+              Установить eska
+            </a>
             <a class="button button-quiet" href="https://github.com/1c-tooling/eska" target="_blank" rel="noreferrer">
-              Репозиторий <span aria-hidden="true">↗</span>
+              <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#github"></use></svg>
+              Репозиторий
             </a>
           </div>
           <p class="hero-flow" aria-label="Рабочий процесс: XML, Git, файл поставки">
@@ -72,7 +79,10 @@
       <section class="product-section shell" id="eska">
         <div class="section-intro">
           <p class="section-index">01 / eska</p>
-          <h2>Рабочий цикл проекта<br>в одной утилите</h2>
+          <div class="section-copy">
+            <h2>CLI для работы<br>с проектами 1С</h2>
+            <p>eska связывает XML-выгрузку, Git и платформу 1С, используя инструменты, необходимые выбранному сценарию.</p>
+          </div>
         </div>
 
         <article class="product-card">
@@ -82,7 +92,10 @@
               <span>CLI · Rust</span>
             </div>
             <strong>eska</strong>
-            <a href="https://github.com/1c-tooling/eska" target="_blank" rel="noreferrer">github.com/1c-tooling/eska <span aria-hidden="true">↗</span></a>
+            <a class="link-with-icon" href="https://github.com/1c-tooling/eska" target="_blank" rel="noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#github"></use></svg>
+              github.com/1c-tooling/eska
+            </a>
           </div>
 
           <div class="feature-list">
@@ -97,6 +110,10 @@
             <div class="feature-row">
               <span>03</span>
               <p>Собирает <code>.cf</code>, <code>.cfe</code>, <code>.epf</code> и <code>.erf</code>.</p>
+            </div>
+            <div class="feature-row feature-row-muted">
+              <span>04</span>
+              <p>Для отдельных сценариев нужны Git, Git LFS и платформа 1С с <code>ibcmd</code>; для <code>patch</code> — также <code>1cv8</code>.</p>
             </div>
           </div>
         </article>
@@ -119,8 +136,9 @@
                   <p>Shell</p>
                 </div>
               </div>
-              <button class="copy-button" type="button" data-copy="curl --proto '=https' --tlsv1.2 -LsSf https://1c-tooling.github.io/eska/install | sh">
-                <span>Копировать</span>
+              <button class="copy-button" type="button" data-copy="curl --proto '=https' --tlsv1.2 -LsSf https://1c-tooling.github.io/eska/install | sh" aria-label="Копировать команду">
+                <svg class="icon icon-copy" aria-hidden="true"><use href="./assets/icons.svg#copy"></use></svg>
+                <svg class="icon icon-check" aria-hidden="true"><use href="./assets/icons.svg#check"></use></svg>
               </button>
             </div>
             <pre><code><span class="prompt">$</span> curl --proto '=https' --tlsv1.2 -LsSf \
@@ -136,8 +154,9 @@
                   <p>PowerShell</p>
                 </div>
               </div>
-              <button class="copy-button" type="button" data-copy="powershell -ExecutionPolicy Bypass -c &quot;irm https://1c-tooling.github.io/eska/install.ps1 | iex&quot;">
-                <span>Копировать</span>
+              <button class="copy-button" type="button" data-copy="powershell -ExecutionPolicy Bypass -c &quot;irm https://1c-tooling.github.io/eska/install.ps1 | iex&quot;" aria-label="Копировать команду">
+                <svg class="icon icon-copy" aria-hidden="true"><use href="./assets/icons.svg#copy"></use></svg>
+                <svg class="icon icon-check" aria-hidden="true"><use href="./assets/icons.svg#check"></use></svg>
               </button>
             </div>
             <pre><code><span class="prompt">PS&gt;</span> powershell -ExecutionPolicy Bypass -c \
@@ -146,7 +165,7 @@
 
           <div class="install-footer">
             <p>Проверка после установки: <code>eska --version</code></p>
-            <a href="./eska/">Отдельная страница установки <span aria-hidden="true">→</span></a>
+            <a class="link-with-icon" href="./eska/">Отдельная страница установки <svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#arrow-right"></use></svg></a>
           </div>
         </div>
       </section>
@@ -158,7 +177,7 @@
         <span>1c-tooling</span>
       </a>
       <p>Открытые инструменты для экосистемы 1С.</p>
-      <a href="https://github.com/1c-tooling" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      <a class="link-with-icon" href="https://github.com/1c-tooling" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="./assets/icons.svg#github"></use></svg>GitHub</a>
     </footer>
 
     <div class="copy-toast" role="status" aria-live="polite" aria-atomic="true"></div>

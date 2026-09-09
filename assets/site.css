@@ -78,6 +78,23 @@ a {
   text-decoration: none;
 }
 
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.link-with-icon {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 button {
   font: inherit;
 }
@@ -148,6 +165,9 @@ pre {
 }
 
 .site-nav > a {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
   transition: color 160ms ease;
 }
 
@@ -201,7 +221,7 @@ pre {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.14fr) minmax(320px, 0.86fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
   gap: clamp(3rem, 7vw, 7rem);
   align-items: center;
   min-height: min(760px, calc(100svh - 92px));
@@ -229,12 +249,22 @@ pre {
 }
 
 .hero h1 {
-  max-width: 800px;
+  max-width: 760px;
   margin: 0;
-  font-size: clamp(3.3rem, 7.3vw, 6.9rem);
+  font-size: clamp(3rem, 6vw, 5.25rem);
   font-weight: 770;
   letter-spacing: -0.075em;
-  line-height: 0.95;
+  line-height: 0.98;
+}
+
+.hero h1 > span,
+.hero h1 em,
+.hero h1 em span {
+  display: block;
+}
+
+.hero h1 em span {
+  white-space: nowrap;
 }
 
 .hero h1 em {
@@ -260,6 +290,7 @@ pre {
 
 .button {
   display: inline-flex;
+  gap: 0.55rem;
   min-height: 50px;
   padding: 0.75rem 1.25rem;
   align-items: center;
@@ -425,6 +456,13 @@ pre {
   line-height: 1;
 }
 
+.section-copy > p {
+  max-width: 620px;
+  margin: 1.5rem 0 0;
+  color: var(--text-soft);
+  font-size: 1rem;
+}
+
 .product-card {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -477,6 +515,11 @@ pre {
   transition: color 160ms ease;
 }
 
+.product-name a .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
 .product-name a:hover {
   color: var(--text-inverse);
 }
@@ -518,6 +561,12 @@ pre {
 .feature-row code {
   font-size: 0.84em;
   font-weight: 500;
+}
+
+.feature-row-muted p {
+  color: var(--text-soft);
+  font-size: clamp(0.95rem, 1.55vw, 1.12rem);
+  font-weight: 520;
 }
 
 .install-section {
@@ -598,16 +647,40 @@ pre {
 }
 
 .copy-button {
-  min-height: 40px;
-  padding: 0.55rem 0.85rem;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  flex: none;
+  place-items: center;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 50%;
   background: transparent;
   color: var(--text-soft);
   cursor: pointer;
-  font-size: 0.75rem;
-  font-weight: 700;
   transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.copy-button .icon {
+  grid-area: 1 / 1;
+  width: 18px;
+  height: 18px;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.copy-button .icon-check {
+  transform: scale(0.55);
+  opacity: 0;
+}
+
+.copy-button[data-state="copied"] .icon-copy {
+  transform: scale(0.55);
+  opacity: 0;
+}
+
+.copy-button[data-state="copied"] .icon-check {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .copy-button:hover {
@@ -815,7 +888,7 @@ pre {
   outline-offset: 4px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -825,6 +898,10 @@ pre {
   .hero-copy {
     position: relative;
     z-index: 1;
+  }
+
+  .hero h1 {
+    max-width: 850px;
   }
 
   .logo-stage {
@@ -890,7 +967,7 @@ pre {
   }
 
   .hero h1 {
-    font-size: clamp(3.15rem, 15vw, 5rem);
+    font-size: clamp(2.7rem, 11.5vw, 4rem);
   }
 
   .hero-lead {
@@ -960,25 +1037,6 @@ pre {
 
   .command-heading {
     align-items: flex-start;
-  }
-
-  .copy-button {
-    min-width: 40px;
-    padding-inline: 0.7rem;
-  }
-
-  .copy-button span {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-
-  .copy-button::before {
-    content: "⧉";
-    font-size: 1rem;
   }
 
   .install-main {
