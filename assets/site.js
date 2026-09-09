@@ -3,6 +3,7 @@
   const root = document.documentElement;
   const themeButton = document.querySelector("[data-theme-toggle]");
   const toast = document.querySelector(".copy-toast");
+  const eskaVersionElements = document.querySelectorAll("[data-eska-version]");
   let toastTimer;
 
   /** Updates the theme control for the active color scheme. */
@@ -80,8 +81,29 @@
     button.addEventListener("click", handleCopy);
   };
 
+  /** Replaces fallback version labels with the latest version published on crates.io. */
+  const syncEskaVersion = async () => {
+    if (!eskaVersionElements.length) return;
+
+    try {
+      const response = await fetch("https://img.shields.io/crates/v/eska.json");
+      if (!response.ok) return;
+
+      const payload = await response.json();
+      const version = String(payload.value || payload.message || "").replace(/^v/, "");
+      if (!/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/.test(version)) return;
+
+      eskaVersionElements.forEach((element) => {
+        element.textContent = version;
+      });
+    } catch {
+      // Keep the version embedded in the page when the badge service is unavailable.
+    }
+  };
+
   themeButton?.addEventListener("click", toggleTheme);
   document.querySelectorAll("[data-copy]").forEach(bindCopyButton);
 
   syncThemeButton();
+  void syncEskaVersion();
 })();
